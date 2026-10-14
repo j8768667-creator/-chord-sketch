@@ -1,0 +1,5 @@
+GeneralUser GS Starter is a 10-preset subset of GeneralUser GS 2.0.3 by S. Christian Collins.
+Includes Grand Piano, Tine Electric Piano, Vibraphone, Nylon Guitar, Acoustic Bass, Finger Bass, Fast Strings, Flute, Warm Pad and Standard 1 drums.
+Unused presets, instruments and samples were removed with SpessaSynth. Original sample and instrument data are retained.
+Original: https://schristiancollins.com/generaluser.php
+See GeneralUser-GS-LICENSE.txt.

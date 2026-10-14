@@ -1,0 +1,6 @@
+(function(root){
+const Settings=typeof module!=='undefined'?require('./sound-settings.js'):root.SoundSettings;
+function bankState(state,id){const soundPrograms={},soundMix={};for(const part of Settings.parts){const p=state.soundPrograms?.[part],selected=p&&(p.bankId||'main')===id;soundPrograms[part]=selected?{...p,bankId:undefined}:null;soundMix[part]={...(state.soundMix?.[part]||{volume:100,pan:0}),...(!selected?{volume:0}:{})};}return {...state,soundPrograms,soundMix};}
+function create(banks){return {banks,presets:banks.flatMap(b=>b.engine.presets.map(p=>({...p,bankId:b.id,bankName:b.name}))),has(part,state){const p=state.soundPrograms?.[part],b=banks.find(b=>b.id===(p?.bankId||'main'));return !!p&&!!b&&b.engine.has(part,bankState(state,b.id));},configure(state){for(const b of banks)b.engine.configure(bankState(state,b.id));},play(n,time,duration,velocity,part,state){const p=state.soundPrograms?.[part],b=banks.find(b=>b.id===(p?.bankId||'main'));return !!p&&!!b&&b.engine.play(n,time,duration,velocity,part,bankState(state,b.id));},stop(){for(const b of banks)b.engine.stop();},destroy(){for(const b of banks)b.engine.destroy();}};}
+const api={create,bankState};if(typeof module!=='undefined')module.exports=api;else root.SoundBankRouter=api;
+})(typeof window!=='undefined'?window:globalThis);

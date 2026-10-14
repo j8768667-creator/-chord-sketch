@@ -1,0 +1,6 @@
+Vendored spessasynth_lib 4.3.14 and spessasynth_core 4.3.22, Apache-2.0.
+index.min.js: changed the core import to the local bundled core.min.js.
+spessasynth_processor.min.js: a forced global stop also clears the scheduled MIDI event queue, so paused/stopped sketches cannot play future scheduled notes.
+Upstream: https://github.com/spessasus/spessasynth_lib and https://github.com/spessasus/spessasynth_core
+core.min.js: changed stb-vorbis import to a local bundled stb-vorbis 0.0.6.
+Vorbis decoder: https://github.com/spessasus/stb-vorbis (Apache-2.0).
